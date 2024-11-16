@@ -1,5 +1,5 @@
 const Gpio = require("pigpio").Gpio;
-const sensorLib = require("node-dht-sensor");
+const sensor = require("node-dht-sensor").promises;
 // const server = require("../bin/server");
 // const moment = require("moment");
 // const modelSensor = require("./models/sensor");
@@ -7,11 +7,12 @@ const sensorLib = require("node-dht-sensor");
 
 exports.status = async (req, res, next) => {
 	try {
+		// const res = await sensor.read(22, 4);
 		// const sensor = new Gpio(17, { mode: Gpio.INPUT });
 
 		// const resault = sensor.digitalRead();
 
-		sensorLib.read(11, 4, function (err, temperature, humidity) {
+		sensorLib.read(11, 17, function (err, temperature, humidity) {
 			if (!err) return res.status(200).json({ temperature, humidity });
 			if (err) return res.status(500).json({ error: err });
 		});
