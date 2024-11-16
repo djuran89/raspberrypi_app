@@ -9,10 +9,10 @@ exports.status = async (req, res, next) => {
 	try {
 		const type = 11;
 		const pin = 17;
-		const res = await sensor.read(type, pin);
+		const resault = await sensor.read(type, pin);
 
-		const temperature = res.temperature.toFixed(1);
-		const humidity = res.humidity.toFixed(1);
+		const temperature = resault.temperature.toFixed(1);
+		const humidity = resault.humidity.toFixed(1);
 
 		res.status(200).json({ temperature, humidity });
 	} catch (err) {
