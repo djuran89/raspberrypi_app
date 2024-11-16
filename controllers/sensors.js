@@ -12,7 +12,7 @@ exports.status = async (req, res, next) => {
 
 		// const resault = sensor.digitalRead();
 
-		sensorLib.read(11, 17, function (err, temperature, humidity) {
+		sensor.read(11, 17, function (err, temperature, humidity) {
 			if (!err) return res.status(200).json({ temperature, humidity });
 			if (err) return res.status(500).json({ error: err });
 		});
