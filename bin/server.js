@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // ROUTE
 const mainRoute = require("../routes/index");
+app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/api", mainRoute);
 
 // ERROR HANDLER

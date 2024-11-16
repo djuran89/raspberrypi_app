@@ -13,6 +13,7 @@ exports.status = async (req, res, next) => {
 
 		sensorLib.read(11, 4, function (err, temperature, humidity) {
 			if (!err) return res.status(200).json({ temperature, humidity });
+			if (err) return res.status(500).json({ error: err });
 		});
 	} catch (err) {
 		next(err);
