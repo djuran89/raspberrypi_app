@@ -21,7 +21,7 @@ const mainRoute = require("../routes/index");
 app.use("/api", mainRoute);
 
 // ERROR HANDLER
-const errorHandling = require("../errors/errorServer");
-app.use(errorHandling);
+// const errorHandling = require("../errors/errorServer");
+// app.use(errorHandling);
 
 module.exports = app;
