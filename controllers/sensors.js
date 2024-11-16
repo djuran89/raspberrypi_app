@@ -1,5 +1,5 @@
 const Gpio = require("pigpio").Gpio;
-const sensor = require("node-dht-sensor").promises;
+const sensor = require("node-dht-sensor");
 // const server = require("../bin/server");
 // const moment = require("moment");
 // const modelSensor = require("./models/sensor");
