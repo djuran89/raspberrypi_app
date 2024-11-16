@@ -1,5 +1,5 @@
 const Gpio = require("pigpio").Gpio;
-// const sensorLib = require("node-dht-sensor");
+const sensorLib = require("node-dht-sensor");
 // const server = require("../bin/server");
 // const moment = require("moment");
 // const modelSensor = require("./models/sensor");
@@ -7,11 +7,13 @@ const Gpio = require("pigpio").Gpio;
 
 exports.status = async (req, res, next) => {
 	try {
-		const sensor = new Gpio(17, { mode: Gpio.INPUT });
+		// const sensor = new Gpio(17, { mode: Gpio.INPUT });
 
-		const resault = sensor.digitalRead();
+		// const resault = sensor.digitalRead();
 
-		res.status(200).json(resault);
+		sensorLib.read(11, 4, function (err, temperature, humidity) {
+			if (!err) return res.status(200).json({ temperature, humidity });
+		});
 	} catch (err) {
 		next(err);
 	}
@@ -41,13 +43,6 @@ exports.status = async (req, res, next) => {
 // switchRelay(relay1, 1);
 
 // const app = {
-// 	connect: async () => {
-// 		try {
-// 			await server();
-// 		} catch (err) {
-// 			console.error(err);
-// 		}
-// 	},
 // 	sensors: [{ name: "Garden", type: 11, pin: temperaturGpio }],
 // 	read: async function () {
 // 		try {
